@@ -1,0 +1,5 @@
+[user]
+	email = bufordsharkley@gmail.com
+	name = Mark Mollineaux
+[core]
+	excludesfile = /home/mgm/.git/global_ignore.txt
