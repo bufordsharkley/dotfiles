@@ -16,3 +16,7 @@ syntax enable
 set background=dark
 "let g:solarized_termcolors=16
 "colorscheme solarized
+"let all files use 4-space tabs. see if I care.
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal expandtab
