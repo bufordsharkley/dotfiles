@@ -1,0 +1,17 @@
+# Configuration file for ipython.
+
+c = get_config()
+
+# Set the color scheme (NoColor, Linux, or LightBG).
+c.TerminalInteractiveShell.colors = 'nocolor'
+
+# Enable deep (recursive) reloading by default. IPython can use the deep_reload
+# module which reloads changes in modules recursively (it replaces the reload()
+# function, so you don't need to change anything to use it). deep_reload()
+# forces a full reload of modules whose code may have changed, which the default
+# reload() function does not.  When deep_reload is off, IPython will use the
+# normal reload(), but deep_reload will still be available as dreload().
+c.TerminalInteractiveShell.deep_reload = True
+
+c.PromptManager.in_template = r'{color.LightGreen}\u@\h{color.LightBlue}[{color.LightCyan}\Y1{color.LightBlue}]{color.Red}|<\#>$ {color.White}'
+c.PromptManager.out_template = r'{color.Red}<\#>  {color.LightPurple}'
