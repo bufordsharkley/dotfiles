@@ -3,19 +3,16 @@
 import os
 import shutil, errno
 
-HOMEDIR = '/home/mgm'
-
 def main():
-    assert os.path.exists(HOMEDIR)
     dotfiledir = os.path.dirname(os.path.realpath(__file__))
-    print dotfiledir
-    try:
-        shutil.copytree(src, dst)
-    except OSError as exc: # python >2.5
-        if exc.errno == errno.ENOTDIR:
-            shutil.copy(src, dst)
-        else:
-            raise
+    homedir = '/'.join(dotfiledir.split('/')[:3])
+    assert homedir.rsplit('/', 1)[-1] == 'mgm'
+    assert os.path.exists(homedir)
+    for file in os.listdir(dotfiledir):
+        if file == 'README.md' or file == 'movein.py':
+            continue
+        os.symlink(os.path.join(dotfiledir, file), os.path.join(homedir, file))
+        print 'creating symlink for {}'.format(file)
 
 
 if __name__ == "__main__":
