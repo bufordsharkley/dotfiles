@@ -9,7 +9,7 @@ def main():
     assert homedir.rsplit('/', 1)[-1] == 'mgm'
     assert os.path.exists(homedir)
     for file in os.listdir(dotfiledir):
-        if file == 'README.md' or file == 'movein.py':
+        if file == 'README.md' or file == 'movein.py' or file == '.git':
             continue
         os.symlink(os.path.join(dotfiledir, file), os.path.join(homedir, file))
         print 'creating symlink for {}'.format(file)
