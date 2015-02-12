@@ -1,4 +1,8 @@
-filetype plugin on
+" Pathogen
+filetype off " Pathogen needs to run before plugin indent on
+call pathogen#infect()
+filetype plugin indent on
+"filetype plugin on
 " searching stuff: ignore case and show all matches
 set ic
 set hls
@@ -9,14 +13,23 @@ nnoremap + maO<esc>`a
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 " The best: jk for Esc replacement. 
 :imap jk <Esc>
-" all the pathogen stuff: TODO make it work on any machine, whether
-" or not pathogen is installed
-"execute pathogen#infect()
+:imap JK <Esc>
 syntax enable
-set background=dark
-"let g:solarized_termcolors=16
-"colorscheme solarized
+set t_Co=256
+"let g:solarized_termcolors=256
+if has('gui_running')
+    set background=dark
+else
+    set background=dark
+endif
+colorscheme solarized
 "let all files use 4-space tabs. see if I care.
 setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
+let g:SuperTabDefaultCompletionType = "context"
+let g:jedi#popup_on_dot = 0
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+set laststatus=2
