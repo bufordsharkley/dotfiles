@@ -7,7 +7,12 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="random"
 #ZSH_THEME="xiong-chiamiov"
-ZSH_THEME="jonathan"
+if [[ -o login ]]
+then
+    ZSH_THEME="jonathan"
+else
+    ZSH_THEME="agnoster"
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -48,6 +53,8 @@ ZSH_THEME="jonathan"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+
+source /etc/zsh_command_not_found
 
 # User configuration
 
@@ -105,3 +112,13 @@ export PYTHONPATH=$PYTHONPATH:/home/mgm/repos/kzsu-web
 
 # for entering a dir immediately after making it!
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+[ -z "$TMUX" ] && export TERM=xterm-256color
+# vim it up:
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'JK' vi-cmd-mode
+
+# start tmux with query...
+if [[ ! -n ${TMUX+1} ]]; then
+    echo 'reminder: tmux'
+fi

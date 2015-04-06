@@ -3,3 +3,8 @@
 	name = Mark Mollineaux
 [core]
 	excludesfile = ~/.git_global_ignore.txt
+	editor = vim
+[alias]
+	unstage = reset HEAD --
+	coollog = log --oneline --decorate
+    branchesbytime = for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'

@@ -76,6 +76,7 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
+    alias ipython='ipython --profile=mgm'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -144,3 +145,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/home/mgm/repos/money:$PATH"
 
 export PYTHONSTARTUP=/home/mgm/.pystartup
+
+#[[ -e /usr/bin/ipython ]] && exec /usr/bin/ipython --profile=mgm
