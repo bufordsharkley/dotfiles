@@ -13,6 +13,8 @@ nnoremap + maO<esc>`a
 " The best: jk for Esc replacement. 
 :imap jk <Esc>
 :imap JK <Esc>
+" execute python with f5:
+autocmd FileType python nnoremap <buffer> <F5> :exec '!python' shellescape(@%, 1)<cr>
 syntax enable
 set t_Co=256
 "let g:solarized_termcolors=256
