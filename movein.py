@@ -12,7 +12,7 @@ import click
 def main(verbose, clobber):
     dotfiledir = os.path.dirname(os.path.realpath(__file__))
     homedir = '/'.join(dotfiledir.split('/')[:3])
-    assert homedir.rsplit('/', 1)[-1] == 'mgm'
+    assert homedir.rsplit('/', 1)[-1] in ['mgm', 'mollineaux']
     assert os.path.exists(homedir)
     for file in os.listdir(dotfiledir):
         if file == 'README.md' or file == 'movein.py' or file == ".git":

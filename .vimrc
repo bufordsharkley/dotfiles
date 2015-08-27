@@ -23,14 +23,14 @@ if has('gui_running')
 else
     set background=dark
 endif
-colorscheme solarized
+"colorscheme solarized TODO - figure out how to use without headaches
 "let all files use 4-space tabs. see if I care.
 setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
 let g:SuperTabDefaultCompletionType = "context"
 let g:jedi#popup_on_dot = 0
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
 set laststatus=2

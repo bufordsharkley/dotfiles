@@ -1,6 +1,5 @@
 The dotfiles.
 
-TODO:
+NOTES:
+https://github.com/powerline/fonts
 
-* Make syncing script (rsync) within my computer
-* Make an "unpacking" script for elsewhere.
