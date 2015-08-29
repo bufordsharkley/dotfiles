@@ -45,7 +45,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source /etc/zsh_command_not_found
+[[ -a "/etc/zsh_command_not_found" ]] && . /etc/zsh_command_not_found
 
 # User configuration
 
