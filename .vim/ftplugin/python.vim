@@ -5,6 +5,4 @@ setlocal autoindent
 match ErrorMsg '\%>80v.\+'
 setlocal smarttab
 setlocal cindent
-highlight ExtraWhitespace ctermbg=red guibg=red
-" Show trailing whitepace and spaces before a tab:
-:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+"autocmd nnoremap <buffer> <F5> :exec '!python' shellescape(@%, 1)<cr>
