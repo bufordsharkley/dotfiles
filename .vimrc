@@ -14,6 +14,7 @@ filetype plugin indent on
 " searching stuff: ignore case and show all matches
 set ic
 set hls
+set number
 set relativenumber
 set autochdir
 " the great un-capitalizer
@@ -61,6 +62,9 @@ nnoremap GH G
 noremap <c-d> D
 nnoremap nn n
 noremap nn n
+" I've never used s-- use brace/paren swap instead
+nnoremap s %
+nnoremap S %
 " replace $ and 0 (which I hate pressing):
 noremap ef $
 noremap EF $
@@ -70,16 +74,20 @@ noremap bb b
 noremap BB b
 noremap bf 0
 noremap BF 0
+" change
+noremap cc c
+noremap CC c
+noremap cf C
+noremap CF C
 " allow for insert and end without shift key.
-nnoremap aa a
+nnoremap ad a
 nnoremap af A
-nnoremap AA a
+nnoremap AD a
 nnoremap AF A
 nnoremap ij I
 nnoremap ii i
 nnoremap IJ I
 nnoremap II i
-nnoremap <leader>A A
 " inserting blank lines above and below: I'm a fan.
 nnoremap _ mao<esc>`a
 nnoremap + maO<esc>`a
@@ -100,9 +108,9 @@ syntax enable
 set t_Co=256
 cnoreabbrev W w
 set background=dark
-"let all files use 4-space tabs. see if I care.
-set tabstop=4
-set shiftwidth=4
+"let all files use 2-space tabs. see if I care.
+set tabstop=2
+set shiftwidth=2
 set expandtab
 let g:SuperTabDefaultCompletionType = "context"
 let g:jedi#popup_on_dot = 0
@@ -119,3 +127,5 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 noremap evev :vsplit $MYVIMRC<cr>
 " meta-referential: source this very file
 nnoremap svsv :write<cr>:source $MYVIMRC<cr>
+" change the tabs when needed
+noremap zvzv :set tabstop=2<cr>:set shiftwidth=2<cr>

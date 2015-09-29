@@ -113,3 +113,7 @@ bindkey -M viins 'JK' vi-cmd-mode
 if [[ ! -n ${TMUX+1} ]]; then
     echo 'reminder: tmux'
 fi
+
+if [[ -f ~/.zshrc_extra ]]; then
+    source ~/.zshrc_extra
+fi
