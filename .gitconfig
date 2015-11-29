@@ -10,3 +10,7 @@
     branchesbytime = for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
     aa = add -A
     s = status
+[push]
+	default = upstream
+[pull]
+	default = upstream

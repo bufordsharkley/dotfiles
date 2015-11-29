@@ -16,7 +16,8 @@ set ic
 set hls
 set number
 set relativenumber
-set autochdir
+"set autochdir
+"autocmd TabEnter * silent! lcd %:p:h
 " the great un-capitalizer
 noremap A a
 noremap B b
@@ -60,11 +61,12 @@ nnoremap ee E
 nnoremap gh G
 nnoremap GH G
 noremap <c-d> D
-nnoremap nn n
-noremap nn n
 " I've never used s-- use brace/paren swap instead
 nnoremap s %
 nnoremap S %
+" This created problems: TODO fix:
+"nnoremap nn n
+"noremap nn n
 " replace $ and 0 (which I hate pressing):
 noremap ef $
 noremap EF $
@@ -103,7 +105,9 @@ noremap <C-H> <C-W>h<C-W>_
 augroup filetype_python
     autocmd!
     autocmd FileType python nnoremap <buffer> <F5> :exec '!python' shellescape(@%, 1)<cr>
+    autocmd FileType python nnoremap <buffer> <F6> :exec '!make unittest' shellescape(@%, 1)<cr>
 augroup END
+
 syntax enable
 set t_Co=256
 cnoreabbrev W w
