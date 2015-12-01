@@ -1,2 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/google/src/cloud/mollineaux/pimeleon-config-fun/google3/platforms/ec/tools/pimeleon/fpga'
+let g:netrw_dirhist_2='/google/src/cloud/mollineaux/pimeleon-config-fun/google3/platforms/ec/verilog'
+let g:netrw_dirhist_3='/google/src/cloud/mollineaux/pimeleon-add-boardspec/google3/platforms/ec/tools/board_spec'
+let g:netrw_dirhist_4='/google/src/cloud/mollineaux/pimeleon-check-pins/google3/third_party/chromiumos/ec/board'
+let g:netrw_dirhist_5='/google/src/cloud/mollineaux/pimeleon-check-pins/google3/third_party/chromiumos/ec/board/pimeleon'
+let g:netrw_dirhist_6='/tmp/fpga_build_b5e7c4d430cbd6b72f229e3602437a67'
+let g:netrw_dirhist_7='/google/src/cloud/mollineaux/pimeleon-solidify-binaries/google3/platforms/ec/tools/pimeleon'
+let g:netrw_dirhist_8='/tmp'
+let g:netrw_dirhist_9='/google/src/cloud/mollineaux/pimeleon-gpio-startup/google3/platforms/ec/tools/pimeleon'

@@ -16,7 +16,6 @@ set ic
 set hls
 set number
 set relativenumber
-set autochdir
 " the great un-capitalizer
 noremap A a
 noremap B b
@@ -129,3 +128,9 @@ noremap evev :vsplit $MYVIMRC<cr>
 nnoremap svsv :write<cr>:source $MYVIMRC<cr>
 " change the tabs when needed
 noremap zvzv :set tabstop=2<cr>:set shiftwidth=2<cr>
+" This disables ELP, allowing :E for explore
+let g:loaded_logipat = 1
+let hostfile=$HOME . '/.vimrc-specific'
+if filereadable(hostfile)
+    exe 'source ' . hostfile
+endif
