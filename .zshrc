@@ -109,6 +109,25 @@ bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'JK' vi-cmd-mode
 
+function beginning-and-insert {
+  zle beginning-of-line
+  zle vi-insert
+}
+function end-and-insert {
+  zle end-of-line
+  zle vi-insert
+}
+
+zle -N beginning-and-insert
+zle -N end-and-insert
+
+bindkey -M vicmd 'ij' beginning-and-insert
+bindkey -M vicmd 'IJ' beginning-and-insert
+bindkey -M vicmd 'af' end-and-insert
+bindkey -M vicmd 'AF' end-and-insert
+
+bindkey "^?" backward-delete-char
+
 # start tmux with query...
 if [[ ! -n ${TMUX+1} ]]; then
     echo 'reminder: tmux'
@@ -117,3 +136,5 @@ fi
 if [[ -f ~/.zshrc_extra ]]; then
     source ~/.zshrc_extra
 fi
+
+RPROMPT='${vim_mode}'
