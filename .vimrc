@@ -16,11 +16,6 @@ set ic
 set hls
 set number
 set relativenumber
-<<<<<<< HEAD
-"set autochdir
-"autocmd TabEnter * silent! lcd %:p:h
-=======
->>>>>>> new_improvements
 " the great un-capitalizer
 noremap A a
 noremap B b
