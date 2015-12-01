@@ -1,26 +1,20 @@
-#!/usr/bin/env python
-
+import argparse
+import errno
 import os
-import shutil, errno
+import shutil
 
-# TODO implement in stdlib stuff (back to optparse, argparse)
-#@click.option("--verbose", "verbose", is_flag=True, default=True)
-#@click.option("--clobber", "-c", is_flag=True, default=False)
-#@click.confirmation_option(prompt="Are you sure you want to modify files in the home folder?")
-#@click.command()
-def main(verbose=True, clobber=False):
-    # uncomment (until opt/argparse added)
-    #clobber = True
+
+def main(clobber=False):
     dirs = os.path.dirname(os.path.realpath(__file__)).split('/')
     # add until you hit home, then add one more
     homedir = ''
     lastone = False
     for dir in dirs:
-       homedir += '/{}'.format(dir)
-       if lastone:
-           break
-       if dir == 'home':
-           lastone = True  # god, this is awful
+        homedir += '/{}'.format(dir)
+        if lastone:
+            break
+        if dir == 'home':
+            lastone = True  # god, this is awful
     usrname = homedir.rsplit('home/', 1)[-1]
     assert usrname in ['mgm', 'mollineaux']
     assert os.path.exists(homedir)
@@ -32,13 +26,11 @@ def main(verbose=True, clobber=False):
         while True:
             try:
                 os.symlink(os.path.join(dotfiledir, file), homefile)
-                if verbose:
-                    print("Successfully created!")
+                print("Successfully created!")
                 break
             except OSError as e:
-                if e.errno == 17: # already exists
-                    if verbose:
-                        print("{} already exists...".format(file))
+                if e.errno == 17:  # already exists
+                    print("{} already exists...".format(file))
                     if not clobber:
                         print(" not changing it")
                         break
@@ -48,9 +40,12 @@ def main(verbose=True, clobber=False):
                         shutil.rmtree(homefile)
                     else:
                         os.remove(homefile)
-                    if verbose:
-                        print(" removed!")
+                    print(" removed!")
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description='Move the dotfiles into ~')
+    parser.add_argument('--clobber', '-c', dest='clobber', action='store_true',
+                        help='overwrite current files in home directory')
+    args = parser.parse_args()
+    main(args.clobber)
