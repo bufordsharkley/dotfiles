@@ -39,8 +39,16 @@ alias ............="cd ../../../../../../../../../../.."
 alias .............="cd ../../../../../../../../../../../.."
 alias ..............="cd ../../../../../../../../../../../../.."
 
-alias oldpython='/usr/bin/env python'
-alias python='ipython -i ~/.ipythonrc'
+python() {
+    if [[ -z "$VIRTUAL_ENV" ]]; then
+        command ipython -i ~/.ipythonrc "$@"
+    else
+        command python "$@"
+    fi
+}
+
+alias envpython='/usr/bin/env python'
+#alias python= if [ -z "$VIRTUAL_ENV" ] ; then 'ipython -i ~/.ipythonrc' else 'python' fi
 alias ipython='ipython -i ~/.ipythonrc'
 alias 'python -m'='/usr/bin/env python -m'
 
