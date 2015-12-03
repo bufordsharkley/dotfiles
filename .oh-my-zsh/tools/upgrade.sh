@@ -19,39 +19,25 @@ else
   NORMAL=""
 fi
 
-printf "${BLUE}%s${NORMAL}\n" "Upgrading Dotfiles"
+printf "${BLUE}%s${NORMAL}\n" "Upgrading Dotfiles from github.com/bufordsharkley/dotfiles"
 cd "$DOTFILES"
 if [[ `git status --porcelain` ]]; then
   echo 'would you like to push?'
   git aa
   git s
-  echo "Type Y to commit these changes:"
+  echo "Type Y to commit and push these changes:"
   read line
   if [ "$line" = Y ] || [ "$line" = y ]; then
     git commit
+    if [ $? -ne 0 ]; then
+      echo "not commiting"
+      exit
+    fi
     until `git push`
     do
-      echo "You are a bad typer."
+      printf "${RED}%s${NORMAL}\n" 'You are a bad typer.'
     done
   fi
 else
-  echo 'would you like to pull?'
-  echo "Type Y to commit these changes:"
-  read line
-  if [ "$line" = Y ] || [ "$line" = y ]; then
-    git pull
-  fi
+  git pull
 fi
-
-exit
-printf '%s' "$GREEN"
-printf '%s\n' '         __                                     __   '
-printf '%s\n' '  ____  / /_     ____ ___  __  __   ____  _____/ /_  '
-printf '%s\n' ' / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ '
-printf '%s\n' '/ /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / '
-printf '%s\n' '\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  '
-printf '%s\n' '                        /____/                       '
-printf "${BLUE}%s\n" "Hooray! Oh My Zsh has been updated and/or is at the current version."
-printf "${BLUE}${BOLD}%s${NORMAL}\n" "To keep up on the latest news and updates, follow us on twitter: https://twitter.com/ohmyzsh"
-printf "${BLUE}${BOLD}%s${NORMAL}\n" "Get your Oh My Zsh swag at:  http://shop.planetargon.com/"
-printf "${RED}%s${NORMAL}\n" 'There was an error updating. Try again later?'
