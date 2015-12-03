@@ -16,11 +16,7 @@ function _upgrade_zsh() {
   _update_zsh_update
 }
 
-epoch_target=$UPDATE_ZSH_DAYS
-if [[ -z "$epoch_target" ]]; then
-  # Default to old behavior
-  epoch_target=13
-fi
+epoch_target=1 # 1 day in between this stuff
 
 if [ -f ~/.zsh-update ]
 then

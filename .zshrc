@@ -73,12 +73,6 @@ bindkey -M vicmd 'AF' end-and-insert
 
 bindkey "^?" backward-delete-char
 
-# start tmux with query...
-# TODO -- this isn't gonna happen. remove.
-if [[ ! -n ${TMUX+1} ]]; then
-    echo 'reminder: tmux'
-fi
-
 if [[ -f ~/.zshrc_extra ]]; then
     source ~/.zshrc_extra
 fi
