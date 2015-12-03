@@ -29,6 +29,10 @@ if [[ `git status --porcelain` ]]; then
   read line
   if [ "$line" = Y ] || [ "$line" = y ]; then
     git commit
+    until `git push`
+    do
+      echo "You are a bad typer."
+    done
   fi
 else
   echo 'would you like to pull?'
