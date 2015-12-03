@@ -21,28 +21,33 @@ fi
 
 printf "${BLUE}%s${NORMAL}\n" "Upgrading Dotfiles"
 cd "$DOTFILES"
-git s
-echo 'would you like to push?'
-echo "Type Y to commit these changes:"
-read line
-if [ "$line" = Y ] || [ "$line" = y ]; then
+if [[ `git status --porcelain` ]]; then
+  echo 'would you like to push?'
   git aa
-  git commit
+  git s
+  echo "Type Y to commit these changes:"
+  read line
+  if [ "$line" = Y ] || [ "$line" = y ]; then
+    git commit
+  fi
+else
+  echo 'would you like to pull?'
+  echo "Type Y to commit these changes:"
+  read line
+  if [ "$line" = Y ] || [ "$line" = y ]; then
+    git pull
+  fi
 fi
 
 exit
-if git pull --rebase --stat origin master
-then
-  printf '%s' "$GREEN"
-  printf '%s\n' '         __                                     __   '
-  printf '%s\n' '  ____  / /_     ____ ___  __  __   ____  _____/ /_  '
-  printf '%s\n' ' / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ '
-  printf '%s\n' '/ /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / '
-  printf '%s\n' '\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  '
-  printf '%s\n' '                        /____/                       '
-  printf "${BLUE}%s\n" "Hooray! Oh My Zsh has been updated and/or is at the current version."
-  printf "${BLUE}${BOLD}%s${NORMAL}\n" "To keep up on the latest news and updates, follow us on twitter: https://twitter.com/ohmyzsh"
-  printf "${BLUE}${BOLD}%s${NORMAL}\n" "Get your Oh My Zsh swag at:  http://shop.planetargon.com/"
-else
-  printf "${RED}%s${NORMAL}\n" 'There was an error updating. Try again later?'
-fi
+printf '%s' "$GREEN"
+printf '%s\n' '         __                                     __   '
+printf '%s\n' '  ____  / /_     ____ ___  __  __   ____  _____/ /_  '
+printf '%s\n' ' / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ '
+printf '%s\n' '/ /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / '
+printf '%s\n' '\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  '
+printf '%s\n' '                        /____/                       '
+printf "${BLUE}%s\n" "Hooray! Oh My Zsh has been updated and/or is at the current version."
+printf "${BLUE}${BOLD}%s${NORMAL}\n" "To keep up on the latest news and updates, follow us on twitter: https://twitter.com/ohmyzsh"
+printf "${BLUE}${BOLD}%s${NORMAL}\n" "Get your Oh My Zsh swag at:  http://shop.planetargon.com/"
+printf "${RED}%s${NORMAL}\n" 'There was an error updating. Try again later?'
