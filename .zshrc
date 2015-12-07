@@ -39,18 +39,22 @@ alias ............="cd ../../../../../../../../../../.."
 alias .............="cd ../../../../../../../../../../../.."
 alias ..............="cd ../../../../../../../../../../../../.."
 
-python() {
-    if [[ -z "$VIRTUAL_ENV" ]]; then
-        command ipython -i ~/.ipythonrc "$@"
-    else
-        command python "$@"
-    fi
-}
+#python() {
+    #if [[ -z "$@" ]]; then
+        #if [[ -z "$VIRTUAL_ENV" ]]; then
+            #python
+        #else
+            #ipython -i ~/.ipythonrc
+        #fi
+    #else
+        #python "$@"
+    #fi
+#}
 
-alias envpython='/usr/bin/env python'
+#alias envpython='/usr/bin/env python'
 #alias python= if [ -z "$VIRTUAL_ENV" ] ; then 'ipython -i ~/.ipythonrc' else 'python' fi
-alias ipython='ipython -i ~/.ipythonrc'
-alias 'python -m'='/usr/bin/env python -m'
+#alias ipython='ipython -i ~/.ipythonrc'
+#alias 'python -m'='/usr/bin/env python -m'
 
 export PYTHONPATH=$PYTHONPATH:/home/mgm/repos/kzsu-web
 
