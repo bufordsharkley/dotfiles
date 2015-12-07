@@ -1,3 +1,5 @@
+#! /bin/zsh
+
 # Use colors, but only if connected to a terminal, and that terminal
 # supports them.
 if which tput >/dev/null 2>&1; then
@@ -21,7 +23,8 @@ fi
 
 printf "${BLUE}%s${NORMAL}\n" "Upgrading Dotfiles from github.com/bufordsharkley/dotfiles"
 cd "$DOTFILES"
-if [[ `git status --porcelain` ]]; then
+git status --porcelain >& /dev/null
+if [ $? -eq 0 ]; then
   echo 'would you like to push?'
   git aa
   git s
