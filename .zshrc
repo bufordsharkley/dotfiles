@@ -40,8 +40,12 @@ alias .............="cd ../../../../../../../../../../../.."
 alias ..............="cd ../../../../../../../../../../../../.."
 
 python() {
-    if [[ -z "$VIRTUAL_ENV" ]]; then
-        command ipython -i ~/.ipythonrc "$@"
+    if [[ -z "$@" ]]; then
+        if [[ -z "$VIRTUAL_ENV" ]]; then
+            command ipython -i ~/.ipythonrc
+        else
+            command python
+        fi
     else
         command python "$@"
     fi
