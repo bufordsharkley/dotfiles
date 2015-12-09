@@ -24,7 +24,7 @@ fi
 printf "${BLUE}%s${NORMAL}\n" "Upgrading Dotfiles from github.com/bufordsharkley/dotfiles"
 cd "$DOTFILES"
 git status --porcelain >& /dev/null
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]]; then
   echo 'would you like to push?'
   git aa
   git s
