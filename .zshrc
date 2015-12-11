@@ -81,6 +81,8 @@ bindkey -M vicmd 'af' end-and-insert
 bindkey -M vicmd 'AF' end-and-insert
 
 bindkey "^?" backward-delete-char
+bindkey -M vicmd "^K" run-help
+bindkey -M viins "^K" run-help
 
 if [[ -f ~/.zshrc_extra ]]; then
     source ~/.zshrc_extra
