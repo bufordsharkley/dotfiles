@@ -1,4 +1,5 @@
-"GOAL: to have vim usable without pressing two keys at once, almost ever.
+"
+" GOAL to have vim usable without pressing two keys at once, almost ever.
 "It is the caps lock way.
 " still a work in progress (but let me know if you find anybody else trying
 " for this same concept)
@@ -99,6 +100,7 @@ vnoremap <space> <Esc>
 noremap <C-K> <C-W>k<C-W>_
 noremap <C-L> <C-W>l<C-W>_
 noremap <C-H> <C-W>h<C-W>_
+noremap <C-A><C-A> <C-W><C-W>
 " execute python with f5:
 augroup filetype_python
     autocmd!
