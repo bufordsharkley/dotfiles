@@ -2,21 +2,18 @@ import argparse
 import errno
 import os
 import shutil
+import sys
 
 
 def main(clobber=False):
     dirs = os.path.dirname(os.path.realpath(__file__)).split('/')
     # add until you hit home, then add one more
-    homedir = ''
-    lastone = False
-    for dir in dirs:
-        homedir += '/{}'.format(dir)
-        if lastone:
-            break
-        if dir == 'home':
-            lastone = True  # god, this is awful
-    usrname = homedir.rsplit('home/', 1)[-1]
-    assert usrname in ['mgm', 'mollineaux']
+    homedir = os.path.expanduser('~')
+    usrname = homedir.rsplit('/', 1)[1]
+    try:
+        assert usrname in ['mgm', 'mollineaux']
+    except AssertionError:
+        raise Exception(usrname)
     assert os.path.exists(homedir)
     dotfiledir = '/'.join(dirs)
     for file in os.listdir(dotfiledir):
