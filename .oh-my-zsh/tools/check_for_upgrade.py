@@ -21,8 +21,7 @@ def _upgrade_zsh():
     _update_zsh_update()
 
 
-def _upgrade_script():
-    class bcolors:
+class bcolors:
         HEADER = '\033[95m'
         OKBLUE = '\033[94m'
         OKGREEN = '\033[92m'
@@ -31,6 +30,9 @@ def _upgrade_script():
         ENDC = '\033[0m'
         BOLD = '\033[1m'
         UNDERLINE = '\033[4m'
+
+
+def _upgrade_script():
     # Use colors, but only if connected to a terminal, and that terminal
     # supports them.
     """
@@ -62,7 +64,6 @@ def _upgrade_script():
           else:
               break
     else:
-        repo.remotes.origin.push()
         repo.remotes.origin.pull()
     """
     git commit
@@ -72,9 +73,15 @@ def _upgrade_script():
     fi
     until `git push`
     do
-      printf "${RED}%s${NORMAL}\n" 'You are a bad typer.'
     done
     """
+
+def _push_to_origin():
+    while True:
+        try:
+            repo.remotes.origin.push()
+        except git.exc.GitCommandError:
+            print bcolors.FAIL + 'You are a bad typer.' + bcolors.ENDC
 
 
 def _parse_zsh_update():
