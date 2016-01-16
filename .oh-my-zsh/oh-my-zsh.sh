@@ -1,6 +1,7 @@
 # Check for updates on initial load...
 if [ "$DISABLE_AUTO_UPDATE" != "true" ]; then
-  env ZSH=$ZSH DISABLE_UPDATE_PROMPT=$DISABLE_UPDATE_PROMPT zsh -f $ZSH/tools/check_for_upgrade.sh
+  source $DOTFILES/env/bin/activate && $DOTFILES/env/bin/python $ZSH/tools/check_for_upgrade.py
+  #env ZSH=$ZSH DISABLE_UPDATE_PROMPT=$DISABLE_UPDATE_PROMPT python $ZSH/tools/check_for_upgrade.py
 fi
 
 # Initializes Oh My Zsh
