@@ -64,7 +64,7 @@ def _upgrade_script():
           else:
               break
     else:
-        _push_to_origin()
+        _push_to_origin(repo)
         repo.remotes.origin.pull()
     """
     git commit
@@ -77,7 +77,7 @@ def _upgrade_script():
     done
     """
 
-def _push_to_origin():
+def _push_to_origin(repo):
     while True:
         try:
             repo.remotes.origin.push()
