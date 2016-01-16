@@ -64,6 +64,7 @@ def _upgrade_script():
           else:
               break
     else:
+        repo.remotes.origin.push()
         repo.remotes.origin.pull()
     """
     git commit
