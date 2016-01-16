@@ -80,7 +80,9 @@ def _upgrade_script():
 def _push_to_origin(repo):
     while True:
         try:
-            repo.remotes.origin.push()
+            a = repo.remotes.origin.push()
+            print a
+            return
         except git.exc.GitCommandError:
             print bcolors.FAIL + 'You are a bad typer.' + bcolors.ENDC
 
