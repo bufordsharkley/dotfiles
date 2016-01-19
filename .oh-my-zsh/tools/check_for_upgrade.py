@@ -52,30 +52,21 @@ def _upgrade_script():
     #gitpath = os.path.join(os.environ['DOTFILES'], 'dotfiles')
     repo = git.Repo(os.environ['DOTFILES'])
     if repo.is_dirty():
-      print 'would you like to push?'
-      repo.git.add(all=True)
-      print repo.git.status()
-      while True:
-          key = raw_input('Type Y to commit and push these changes (d for diff):').strip().lower()
-          if key == 'y':
-              raise Exception('huh?')
-          elif key == 'd':
-              print repo.git.diff(cached=True, color=True)
-          else:
-              break
+        print 'would you like to push?'
+        repo.git.add(all=True)
+        print repo.git.status()
+        while True:
+            key = raw_input('Type Y to commit and push these changes (d for diff):').strip().lower()
+            if key == 'y':
+                commit_message = raw_input('Commit message?').strip()
+                repo.index.commit(commit_message)
+                _push_to_origin(repo)
+            elif key == 'd':
+                print repo.git.diff(cached=True, color=True)
+            else:
+                break
     else:
-        _push_to_origin(repo)
         repo.remotes.origin.pull()
-    """
-    git commit
-    if [ $? -ne 0 ]; then
-      echo "not commiting"
-      exit
-    fi
-    until `git push`
-    do
-    done
-    """
 
 def _push_to_origin(repo):
     while True:
