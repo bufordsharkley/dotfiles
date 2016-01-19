@@ -19,15 +19,18 @@ def _update_zsh_update():
 
 def print_color(message, color):
     colors = {
-        'blue': '\033[94m',
-        'green': '\033[92m',
-        'FAIL': '\033[91m',
         'normal': '\033[0m',
+        'bold': '\033[1m',
+        'grey': '\033[2m',
+        'italic': '\033[3m',
+        'underline': '\033[4m',
+        'red': '\033[91m',
+        'green': '\033[92m',
+        'yellow': '\033[93m',
+        'blue': '\033[94m',
+        'purple': '\033[95m',
+        'light blue': '\033[96m',
     }
-    #HEADER = '\033[95m'
-    #WARNING = '\033[93m'
-    #BOLD = '\033[1m'
-    #UNDERLINE = '\033[4m'
     print colors[color] + message + colors['normal']
 
 
@@ -53,6 +56,9 @@ def _upgrade_script():
                 break
     else:
         repo.remotes.origin.pull()
+        # TODO -- only print if anything happened.
+        # and print new commit messages.
+        print_color('Pulled from origin successful.', 'green')
 
 
 def _push_to_origin(repo):
