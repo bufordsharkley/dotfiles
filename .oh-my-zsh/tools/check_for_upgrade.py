@@ -34,6 +34,10 @@ def print_color(message, color):
     print colors[color] + message + colors['normal']
 
 
+class NotReadyToCommitError(Exception):
+  pass
+
+
 def _upgrade_script():
     # TODO - use colors only if connected to a terminal, and colors supported
     print_color('Upgrading Dotfiles from github.com/bufordsharkley/dotfiles',
@@ -53,7 +57,7 @@ def _upgrade_script():
             elif key == 'd':
                 print repo.git.diff(cached=True, color=True)
             else:
-                break
+                raise NotReadyToCommitError
     else:
         repo.remotes.origin.pull()
         # TODO -- only print if anything happened.
@@ -83,7 +87,10 @@ if __name__ == '__main__':
         last_update = _fetch_time_of_last_update()
         diff = _current_epoch_days() - last_update
         if diff > DAYS_BETWEEN_CHECKS:
-            _upgrade_script()
-            _update_zsh_update()
+            try:
+                _upgrade_script()
+                _update_zsh_update()
+            except NotReadyToCommitError:
+              pass
     else:
         _update_zsh_update()
