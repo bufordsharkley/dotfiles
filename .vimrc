@@ -112,6 +112,8 @@ syntax enable
 set t_Co=256
 cnoreabbrev W w
 set background=dark
+"All files in directory as current buffer:
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
 "let all files use 2-space tabs. see if I care.
 set tabstop=2
 set shiftwidth=2
