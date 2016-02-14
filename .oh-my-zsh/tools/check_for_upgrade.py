@@ -59,10 +59,14 @@ def _upgrade_script():
             else:
                 raise NotReadyToCommitError
     else:
-        repo.remotes.origin.pull()
-        # TODO -- only print if anything happened.
-        # and print new commit messages.
-        print_color('Pulled from origin successful.', 'green')
+        try:
+            repo.remotes.origin.pull()
+            # TODO -- only print if anything happened.
+            # and print new commit messages.
+            print_color('Pulled from origin successful.', 'green')
+        except git.exc.GitCommandError:
+            print_color('No connectivity; cannot pull from dotfiles', 'yellow')
+
 
 
 def _push_to_origin(repo):
