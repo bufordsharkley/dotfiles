@@ -139,14 +139,18 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue black '%~'
+  if [[ $KEYMAP = "vicmd" ]]; then
+    prompt_segment green black '%~'
+  else
+    prompt_segment blue black '%~'
+  fi
 }
 
 # Virtualenv: current working virtualenv
 prompt_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
-  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    prompt_segment blue black "(`basename $virtualenv_path`)"
+  if [[ -n $virtualenv_path ]]; then
+    prompt_segment yellow blue "(`basename $virtualenv_path`)"
   fi
 }
 
@@ -164,19 +168,11 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
-vim_ins_mode="%{$fg[cyan]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg[green]%}[CMD]%{$reset_color%}"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-    vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+function zle-line-init zle-keymap-select {
     zle reset-prompt
 }
-zle -N zle-keymap-select
 
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
+zle -N zle-line-init
 zle -N zle-keymap-select
 
 ## Main prompt
@@ -191,4 +187,5 @@ build_prompt() {
   prompt_end
 }
 
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 PROMPT='%{%f%b%k%}$(build_prompt) '
