@@ -62,6 +62,7 @@ function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'JK' vi-cmd-mode
+bindkey "^R" history-incremental-search-backward
 
 function beginning-and-insert {
   zle beginning-of-line
