@@ -1,10 +1,10 @@
-"
 " GOAL to have vim usable without pressing two keys at once, almost ever.
 "It is the caps lock way.
 " still a work in progress (but let me know if you find anybody else trying
 " for this same concept)
 
 "first, some to-be-sure stuff:
+
 set nocompatible
 set encoding=utf-8
 set title
@@ -60,8 +60,11 @@ nnoremap ee E
 nnoremap gh G
 nnoremap GH G
 noremap <c-d> D
-" I've never used s-- use brace/paren swap instead
-nnoremap s %
+" I don't want to use undo in visual-- cap is better:
+vnoremap U U
+vnoremap u U
+" And same for reaching tilde:
+vnoremap ` ~
 nnoremap S %
 " This created problems: TODO fix:
 "nnoremap nn n
@@ -81,17 +84,22 @@ noremap CC c
 noremap cf C
 noremap CF C
 " allow for insert and end without shift key.
+nnoremap aa a
+nnoremap AA a
 nnoremap ad a
 nnoremap af A
 nnoremap AD a
 nnoremap AF A
-nnoremap ij I
 nnoremap ii i
-nnoremap IJ I
 nnoremap II i
+nnoremap ij I
+nnoremap IJ I
 " inserting blank lines above and below: I'm a fan.
 nnoremap _ mao<esc>`a
 nnoremap + maO<esc>`a
+" moving lines around.
+nnoremap - ddp
+nnoremap = kddpk
 noremap <space> viw
 vnoremap <space> <Esc>
 " f4 to toggle highlighting
