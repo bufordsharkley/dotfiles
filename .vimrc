@@ -59,16 +59,20 @@ nnoremap OO o
 nnoremap ee E
 nnoremap gh G
 nnoremap GH G
+vnoremap gh G$
+vnoremap GH G$
 noremap <c-d> D
 " I don't want to use undo in visual-- cap is better:
 vnoremap U U
 vnoremap u U
 " And same for reaching tilde:
 vnoremap ` ~
+vnoremap f $
+vnoremap F $
+vnoremap a 0
+vnoremap A 0
+
 nnoremap S %
-" This created problems: TODO fix:
-"nnoremap nn n
-"noremap nn n
 " replace $ and 0 (which I hate pressing):
 noremap ef $
 noremap EF $
@@ -86,6 +90,8 @@ noremap CF C
 " allow for insert and end without shift key.
 nnoremap aa a
 nnoremap AA a
+nnoremap as a
+nnoremap AS a
 nnoremap ad a
 nnoremap af A
 nnoremap AD a
