@@ -100,6 +100,8 @@ nnoremap ii i
 nnoremap II i
 nnoremap ij I
 nnoremap IJ I
+" copying paragraph:"
+nnoremap cp yap<S-}>p
 " inserting blank lines above and below: I'm a fan.
 nnoremap _ mao<esc>`a
 nnoremap + maO<esc>`a
