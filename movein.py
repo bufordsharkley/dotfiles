@@ -17,7 +17,8 @@ def main(clobber=False):
     assert os.path.exists(homedir)
     dotfiledir = '/'.join(dirs)
     for file in os.listdir(dotfiledir):
-        if file == 'README.md' or file == 'movein.py' or file == ".git":
+        if file in ('README.md', 'movein.py', ".git",
+                    'requirements.txt', 'env'):
             continue
         homefile = os.path.join(homedir, file)
         while True:
