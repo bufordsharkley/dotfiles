@@ -89,4 +89,4 @@ if [[ -f ~/.zshrc_extra ]]; then
     source ~/.zshrc_extra
 fi
 
-RPROMPT='${vim_mode}'
+python $DOTFILES/doom.py

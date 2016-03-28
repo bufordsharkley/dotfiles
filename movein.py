@@ -18,7 +18,7 @@ def main(clobber=False):
     dotfiledir = '/'.join(dirs)
     for file in os.listdir(dotfiledir):
         if file in ('README.md', 'movein.py', ".git",
-                    'requirements.txt', 'env'):
+                    'requirements.txt', 'env', 'doom.py'):
             continue
         homefile = os.path.join(homedir, file)
         while True:
