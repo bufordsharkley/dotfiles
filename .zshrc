@@ -89,5 +89,7 @@ if [[ -f ~/.zshrc_extra ]]; then
     source ~/.zshrc_extra
 fi
 
-eval $(thefuck --alias)
+if [[ -f /usr/local/bin/thefuck ]]; then
+  eval $(thefuck --alias)
+fi
 python $DOTFILES/doom.py
