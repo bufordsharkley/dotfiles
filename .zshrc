@@ -92,4 +92,7 @@ fi
 if [[ -f /usr/local/bin/thefuck ]]; then
   eval $(thefuck --alias)
 fi
-python $DOTFILES/doom.py
+
+alias radio="envpython $DOTFILES/radio/radio.py"
+
+python $DOTFILES/scripts/doom.py

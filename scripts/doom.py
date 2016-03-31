@@ -20,10 +20,10 @@ def get_guess():
 
 def quiz_until_correct():
   while True:
-    random_offset = random.randrange(0, 366 * 140)
+    random_offset = random.randrange(0, 366 * 180)
     rand_day = datetime.datetime.fromordinal(JAN_ONE + random_offset).date()
-    if rand_day > TODAY:
-      continue
+    #if rand_day > TODAY:
+    #  continue
     print rand_day
     weekday = rand_day.isoweekday()
     guess = get_guess()
