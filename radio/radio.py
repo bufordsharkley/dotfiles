@@ -2,7 +2,12 @@ import sys
 
 STATIONS = {'wfmu': 'http://wfmu.org/wfmu.pls',
             'kzsu': 'http://kzsu-streams.stanford.edu/kzsu-1-hi.mp3',
-            'kspc': 'http://stream.kspc.org:8080/stream192'}
+            'kspc': 'http://stream.kspc.org:8080/stream192',
+            'kqed': 'http://streams.kqed.org/',
+            'kfjc': 'http://aac.kfjc.org/high.m3u',
+            #'kqed': 'http://streams.kqed.org/kqedradio.m3u',
+           }
+#gnome-terminal --command="mplayer -slave -idle -input file=/tmp/radiofifo"
 
 FIFO_FILE = '/tmp/radiofifo'
 
