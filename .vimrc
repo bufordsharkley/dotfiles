@@ -101,7 +101,7 @@ nnoremap II i
 nnoremap ij I
 nnoremap IJ I
 " copying paragraph:"
-nnoremap cp yap<S-}>p
+" nnoremap cp yap<S-}>p  -- good, but cp is a bad shortcut b/c of parens
 " inserting blank lines above and below: I'm a fan.
 nnoremap _ mao<esc>`a
 nnoremap + maO<esc>`a
@@ -139,9 +139,11 @@ let g:jedi#popup_on_dot = 0
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
-set laststatus=2 
+set laststatus=2
 " parentheses deletion as p, etc
 onoremap p i(
+" File navigation should have line numbers:
+let g:netrw_bufsettings = 'noma nomod nu relativenumber nobl nowrap ro'
 " Show trailing whitepace and spaces before a tab:
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
