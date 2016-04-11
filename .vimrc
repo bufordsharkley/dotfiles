@@ -122,6 +122,7 @@ augroup filetype_python
     autocmd!
     autocmd FileType python nnoremap <buffer> <F5> :exec '!python' shellescape(@%, 1)<cr>
     autocmd FileType python nnoremap <buffer> <F6> :exec '!make unittest' shellescape(@%, 1)<cr>
+    autocmd FileType python nnoremap <buffer> <F9> :exec '!make test' shellescape(@%, 1)<cr>
 augroup END
 
 syntax enable
