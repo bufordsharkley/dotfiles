@@ -38,27 +38,27 @@ def resolve_station_to_command(station):
     stream = STATIONS[station.lower()]
     return 'loadfile {}\n'.format(stream)
 
+
 def resolve_other_command(args):
     if args[0] == 'mute':
         return 'volume 0 1'
     elif args[0] == 'unmute':
         return 'volume 100 1'
-    else:
-        raise NotImplementedError
+
 
 def change_channel(args):
-    try:
-        command = resolve_station_to_command(args[0])
-    except KeyError:
-        command = resolve_other_command(args)
+    command = resolve_other_command(args)
+
+    if command is None:
+        try:
+            command = resolve_station_to_command(args[0])
+        except KeyError:
+            print('No station with that name', file=sys.stderr)
+            sys.exit(1)
 
     _check_status_of_fifo(FIFO_FILE)
-
-    try:
-        with open(FIFO_FILE, 'w') as f:
-            f.write(command + '\n')
-    except KeyError:
-        print('No station with that name', file=sys.stderr)
+    with open(FIFO_FILE, 'w') as f:
+        f.write(command + '\n')
 
 
 def main():
