@@ -20,25 +20,6 @@ export DOTFILES=$HOME/repos/dotfiles
 
 source $ZSH/oh-my-zsh.sh
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-alias .......="cd ../../../../../.."
-alias ........="cd ../../../../../../.."
-alias .........="cd ../../../../../../../.."
-alias ..........="cd ../../../../../../../../.."
-alias ...........="cd ../../../../../../../../../.."
-alias ............="cd ../../../../../../../../../../.."
-alias .............="cd ../../../../../../../../../../../.."
-alias ..............="cd ../../../../../../../../../../../../.."
-
 python() {
     if [[ -z "$@" ]]; then
         if [[ -z "$VIRTUAL_ENV" ]]; then
@@ -93,6 +74,5 @@ if [[ -f /usr/local/bin/thefuck ]]; then
   eval $(thefuck --alias)
 fi
 
-alias radio="envpython $DOTFILES/radio/radio.py"
 
 python $DOTFILES/scripts/doom.py

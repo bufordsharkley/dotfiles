@@ -6,7 +6,8 @@ import sys
 
 
 def main(clobber=False):
-    dirs = os.path.dirname(os.path.realpath(__file__)).split('/')
+    parent = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+    dirs = parent.split('/')
     # add until you hit home, then add one more
     homedir = os.path.expanduser('~')
     usrname = homedir.rsplit('/', 1)[1]
@@ -17,14 +18,13 @@ def main(clobber=False):
     assert os.path.exists(homedir)
     dotfiledir = '/'.join(dirs)
     for file in os.listdir(dotfiledir):
-        if file in ('README.md', 'movein.py', ".git",
-                    'requirements.txt', 'env', 'doom.py'):
+        if file in ('README.md', '.git', 'requirements.txt', 'env'):
             continue
         homefile = os.path.join(homedir, file)
         while True:
             try:
                 os.symlink(os.path.join(dotfiledir, file), homefile)
-                print("Successfully created!")
+                print("{} successfully created!".format(file))
                 break
             except OSError as e:
                 if e.errno == 17:  # already exists
