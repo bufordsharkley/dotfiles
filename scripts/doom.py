@@ -35,23 +35,31 @@ def random_date():
 
 
 def quiz_until_correct():
+  errors = 0
   while True:
+    orig_time = time.time()
     rand_day = random_date()
     print random_date_format(rand_day)
     weekday = rand_day.isoweekday()
     guess = get_guess()
     if weekday % 7 == guess % 7:
+      display_score(orig_time, errors)
       return
     print 'No. Was {}'.format(REVERSE_DAYS[weekday % 7])
+    errors += 1
+
+
+def display_score(orig_time, errors):
+  print time.time() - orig_time
+  if errors:
+    print 'with error count: {}'.format(errors)
 
 
 def main():
   try:
-    orig_time = time.time()
     quiz_until_correct()
   except (EOFError, KeyboardInterrupt):
     pass
-  print time.time() - orig_time
 
 if __name__ == "__main__":
   main()
