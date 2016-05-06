@@ -74,5 +74,6 @@ if [[ -f /usr/local/bin/thefuck ]]; then
   eval $(thefuck --alias)
 fi
 
+alias doom='python $DOTFILES/scripts/doom.py'
 
 python $DOTFILES/scripts/doom.py
