@@ -1,0 +1,8 @@
+from xonsh.environ import git_dirty_working_directory
+
+$FORMATTER_DICT['branch_color'] = lambda: ('{YELLOW}'
+                                           if git_dirty_working_directory(include_untracked=True)
+                                           else '{GREEN}')
+
+$MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
+$XONSH_COLOR_STYLE = 'fruity'
