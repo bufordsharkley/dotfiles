@@ -4,5 +4,18 @@ $FORMATTER_DICT['branch_color'] = lambda: ('{YELLOW}'
                                            if git_dirty_working_directory(include_untracked=True)
                                            else '{GREEN}')
 
+
+def prompt_status():
+  symbols = []
+  if __xonsh_history__.rtns and __xonsh_history__.rtns[-1] != 0:
+    symbols.append("{RED}✘ ")
+  # TODO - jobs is broken; add when fixed:
+  #[[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
+  return ' '.join(symbols) if symbols else ''
+
+$FORMATTER_DICT['prompt_status'] = prompt_status
+
+
 $MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
 $XONSH_COLOR_STYLE = 'fruity'
+$PROMPT = '{prompt_status}{YELLOW}{env_name}{BG#YELLOW}{BOLD_GREEN}{user}@{hostname}{BOLD_BLUE} {cwd}{branch_color}{curr_branch}{NO_COLOR} {BOLD_BLUE}{prompt_end}{NO_COLOR} '
