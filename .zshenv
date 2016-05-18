@@ -1,6 +1,7 @@
 export DOTFILES=$HOME/repos/dotfiles
 
 alias ll='ls -alF'
+alias lt='ls -alFt'
 alias la='ls -A'
 alias l='ls -CF'
 
