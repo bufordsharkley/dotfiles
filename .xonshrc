@@ -29,8 +29,8 @@ def xonsh_hostname():
   if 'SSH_CLIENT' in ${...}:
     bg_color = 'BG#F00'
   else:
-    bg_color = 'BG#000'
-  return '{{{}}}{{WHITE}}{}@{}{{BG#000}}'.format(bg_color, $FORMATTER_DICT['user'], hostname)
+    bg_color = 'NO_COLOR'
+  return '{{{}}}{{WHITE}}{}@{}{{NO_COLOR}}'.format(bg_color, $FORMATTER_DICT['user'], hostname)
 
 """
 
