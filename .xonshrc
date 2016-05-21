@@ -1,8 +1,5 @@
-from xonsh.environ import git_dirty_working_directory
-
-$FORMATTER_DICT['branch_color'] = lambda: ('{YELLOW}'
-                                           if git_dirty_working_directory(include_untracked=True)
-                                           else '{GREEN}')
+import socket
+import xonsh.environ as xenv
 
 
 def prompt_status():
@@ -13,9 +10,69 @@ def prompt_status():
   #[[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
   return ' '.join(symbols) if symbols else ''
 
+
+def current_branch():
+  branch = xenv.current_branch()
+  if branch:
+    branch = '' + branch
+  return branch
+
+
+def branch_color():
+  if xenv.git_dirty_working_directory(include_untracked=True):
+    return '{YELLOW}'
+  return '{GREEN}'
+
+
+def xonsh_hostname():
+  hostname = socket.gethostname().split('.', 1)[0]
+  if 'SSH_CLIENT' in ${...}:
+    bg_color = 'BG#F00'
+  else:
+    bg_color = 'BG#000'
+  return '{{{}}}{{WHITE}}{}@{}{{BG#000}}'.format(bg_color, $FORMATTER_DICT['user'], hostname)
+
+"""
+
+def prompt_git():
+  repo_path=$(git rev-parse --git-dir 2>/dev/null)
+
+  if !(git rev-parse --is-inside-work-tree):
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+    if $dirty:
+      prompt_segment yellow black
+    else:
+      prompt_segment green black
+
+    if [[ -e "${repo_path}/BISECT_LOG" ]]:
+      mode=" <B>"
+    elif [[ -e "${repo_path}/MERGE_HEAD" ]]:
+      mode=" >M<"
+    elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]:
+      mode=" >R>"
+
+    setopt promptsubst
+    autoload -Uz vcs_info
+
+    enable git
+    get-revision true
+    check-for-changes true
+    stagedstr '✚'
+    unstagedstr '●'
+    formats ' %u%c'
+    actionformats ' %u%c'
+    return "${ref/refs\/heads\// }${vcs_info_msg_0_%% }${mode}"
+"""
+
 $FORMATTER_DICT['prompt_status'] = prompt_status
+$FORMATTER_DICT['curr_branch'] = current_branch
+$FORMATTER_DICT['branch_color'] = branch_color
+$FORMATTER_DICT['hostname'] = xonsh_hostname
+
+
+
 
 
 $MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
 $XONSH_COLOR_STYLE = 'fruity'
-$PROMPT = '{prompt_status}{BG#FF0}{YELLOW}{env_name}{BG#000}{BOLD_GREEN}{user}@{hostname}{BOLD_BLUE} {cwd}{branch_color}{curr_branch}{NO_COLOR} {BOLD_BLUE}{prompt_end}{NO_COLOR} '
+$PROMPT = '{prompt_status}{BG#FF0}{YELLOW}{env_name}{hostname}{BOLD_BLUE} {cwd}{branch_color} {curr_branch}{NO_COLOR} {BOLD_BLUE}{prompt_end}{NO_COLOR} '
