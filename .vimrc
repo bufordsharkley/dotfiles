@@ -57,6 +57,7 @@ nnoremap oo o
 nnoremap OI O
 nnoremap OO o
 nnoremap ee E
+nnoremap GG gg
 nnoremap gh G
 nnoremap GH G
 vnoremap gh G$
