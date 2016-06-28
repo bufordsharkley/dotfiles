@@ -12,6 +12,6 @@
     s = status
     d = diff
 [push]
-	default = upstream
+	default = current
 [pull]
 	default = upstream
