@@ -20,3 +20,4 @@ alias .............="cd ../../../../../../../../../../../.."
 alias ..............="cd ../../../../../../../../../../../../.."
 
 alias radio="python $DOTFILES/radio/radio.py"
+alias pomodoro="python $DOTFILES/../pomodoro/pomodoro.py"
