@@ -22,7 +22,8 @@ def _check_status_of_fifo(path):
         resp = raw_input('{} does not exist. Create?\n'.format(path))
         if resp.strip().lower() == 'y':
             os.mkfifo(path)
-        sys.exit(1)
+        else:
+            sys.exit(1)
     if not stat.S_ISFIFO(os.stat(path).st_mode):
         raise RuntimeError('{} is not a FIFO'.format(path))
     try:
