@@ -12,3 +12,4 @@ OTHER INSTALL:
 * sl
 * inkscape
 * python-uniconvertor
+* meld
