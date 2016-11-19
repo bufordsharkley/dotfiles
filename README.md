@@ -14,3 +14,4 @@ OTHER INSTALL:
 * python-uniconvertor
 * sl
 * unity-tweak
+* audacity
