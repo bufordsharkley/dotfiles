@@ -7,9 +7,11 @@ https://github.com/powerline/fonts
 pip install --user git+git://github.com/powerline/powerline
 
 OTHER INSTALL:
-* ipython
-* unity-tweak
-* sl
+* colordiff
 * inkscape
-* python-uniconvertor
+* ipython
 * meld
+* python-uniconvertor
+* sl
+* unity-tweak
+* audacity

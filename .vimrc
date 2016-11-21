@@ -114,6 +114,7 @@ vnoremap <space> <Esc>
 " f4 to toggle highlighting
 :noremap <F3> :set paste<CR>"*p:set nopaste<CR>
 :noremap <F4> :set hlsearch! hlsearch?<CR>
+:noremap <F1> :set buftype=""
 "windows: allowing switching easily:
 noremap <C-K> <C-W>k<C-W>_
 noremap <C-L> <C-W>l<C-W>_
