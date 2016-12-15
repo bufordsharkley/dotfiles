@@ -15,3 +15,4 @@ OTHER INSTALL:
 * sl
 * unity-tweak
 * audacity
+* lynx
