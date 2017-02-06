@@ -140,9 +140,15 @@ set shiftwidth=2
 set expandtab
 let g:SuperTabDefaultCompletionType = "context"
 let g:jedi#popup_on_dot = 0
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+if has('python3')
+   python3 from powerline.vim import setup as powerline_setup
+   python3 powerline_setup()
+   python3 del powerline_setup
+elseif has('python')
+   python from powerline.vim import setup as powerline_setup
+   python powerline_setup()
+   python del powerline_setup
+endif
 set laststatus=2
 " parentheses deletion as p, etc
 onoremap p i(

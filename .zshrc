@@ -88,4 +88,7 @@ man() {
 
 alias doom='python $DOTFILES/scripts/doom.py'
 
+
+mplayerbg() { mplayer "$@" </dev/null >/dev/null 2>&1 & }
+
 python $DOTFILES/scripts/doom.py
