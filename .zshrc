@@ -34,7 +34,7 @@ python() {
 
 alias envpython='/usr/bin/env python'
 
-export PYTHONPATH=$PYTHONPATH:/home/mgm/repos/kzsu-web
+export PYTHONPATH=$PYTHONPATH:.:/home/mgm/repos/kzsu-web
 
 # for entering a dir immediately after making it!
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
