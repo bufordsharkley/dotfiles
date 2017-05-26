@@ -7,7 +7,7 @@ import sys
 
 
 STATIONS = {'wfmu': 'http://wfmu.org/wfmu.pls',
-            'kzsu': 'http://kzsu-streams.stanford.edu/kzsu-1-hi.mp3',
+            'kzsu': 'http://kzsu-streams.stanford.edu/kzsu-1-128.mp3',
             'kspc': 'http://stream.kspc.org:8080/stream192',
             'kqed': 'http://streams.kqed.org/',
             'kfjc': 'http://aac.kfjc.org/high.m3u',
