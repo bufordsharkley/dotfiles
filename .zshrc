@@ -87,7 +87,7 @@ man() {
 }
 
 alias doom='python $DOTFILES/scripts/doom.py'
-
+alias clipboard='xclip -sel clip'
 
 mplayerbg() { mplayer "$@" </dev/null >/dev/null 2>&1 & }
 

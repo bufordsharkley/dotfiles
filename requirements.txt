@@ -1,1 +1,1 @@
-gitpython
+GitPython==2.1.7
