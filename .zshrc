@@ -91,4 +91,6 @@ alias clipboard='xclip -sel clip'
 
 mplayerbg() { mplayer "$@" </dev/null >/dev/null 2>&1 & }
 
-python $DOTFILES/scripts/doom.py
+if [[ -z $PIPENV_ACTIVE ]]; then
+  python $DOTFILES/scripts/doom.py
+fi
