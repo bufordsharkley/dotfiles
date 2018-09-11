@@ -82,7 +82,7 @@ def _fetch_time_of_last_update():
     file_contents = open(ZSH_UPDATE_FILE).read()
     try:
         return int(file_contents.split('=')[1])
-    except ValueError:
+    except (ValueError, IndexError):
         return 0
 
 
