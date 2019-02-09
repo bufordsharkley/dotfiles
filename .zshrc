@@ -15,7 +15,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/home/mgm/repos/money:/usr/local/heroku/bin:/home/mgm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/home/mgm/repos/money:/usr/local/heroku/bin:/home/mgm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/texlive/2018/bin/x86_64-linux/"
 export DOTFILES=$HOME/repos/dotfiles
 
 source $ZSH/oh-my-zsh.sh
