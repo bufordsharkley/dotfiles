@@ -6,7 +6,7 @@ import subprocess
 import sys
 
 
-STATIONS = {'wfmu': 'http://wfmu.org/wfmu.pls',
+STATIONS = {'wfmu': 'http://stream0.wfmu.org/freeform-high.aac',
             'kzsu': 'http://kzsu-streams.stanford.edu/kzsu-1-128.mp3',
             'kspc': 'http://stream.kspc.org:8080/stream192',
             'kqed': 'http://streams.kqed.org/',
