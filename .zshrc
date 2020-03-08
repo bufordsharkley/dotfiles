@@ -23,7 +23,7 @@ source $ZSH/oh-my-zsh.sh
 python() {
     if [[ -z "$@" ]]; then
         if [[ -z "$VIRTUAL_ENV" ]]; then
-            command ipython -i ~/.ipythonrc
+            command ipython3 -i ~/.ipythonrc
         else
             command python
         fi
@@ -92,5 +92,6 @@ alias clipboard='xclip -sel clip'
 mplayerbg() { mplayer "$@" </dev/null >/dev/null 2>&1 & }
 
 if [[ -z $PIPENV_ACTIVE ]]; then
-  python $DOTFILES/scripts/doom.py
+  python3 $DOTFILES/scripts/doom.py
+  todo-txt lsp a-c
 fi

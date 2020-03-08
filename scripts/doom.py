@@ -12,7 +12,7 @@ TODAY = datetime.date.today().toordinal()
 def get_guess():
   while True:
     try:
-      guess = raw_input('weekday?:\n')
+      guess = input('weekday?:\n')
       return DAYS[guess.lower()[:3]]
     except KeyError:
       pass
@@ -39,20 +39,20 @@ def quiz_until_correct():
   while True:
     orig_time = time.time()
     rand_day = random_date()
-    print random_date_format(rand_day)
+    print(random_date_format(rand_day))
     weekday = rand_day.isoweekday()
     guess = get_guess()
     if weekday % 7 == guess % 7:
       display_score(orig_time, errors)
       return
-    print 'No. Was {}'.format(REVERSE_DAYS[weekday % 7])
+    print('No. Was {}'.format(REVERSE_DAYS[weekday % 7]))
     errors += 1
 
 
 def display_score(orig_time, errors):
-  print time.time() - orig_time
+  print(time.time() - orig_time)
   if errors:
-    print 'with error count: {}'.format(errors)
+    print('with error count: {}'.format(errors))
 
 
 def main():

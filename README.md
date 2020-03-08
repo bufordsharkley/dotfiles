@@ -1,10 +1,10 @@
 The dotfiles.
 
 NOTES:
-virtualenv env
+python3 -m venv env
 source env/bin/activate && pip install -r requirements.txt
 https://github.com/powerline/fonts
-pip install --user git+git://github.com/powerline/powerline
+sudo apt install powerline
 
 OTHER INSTALL:
 * colordiff

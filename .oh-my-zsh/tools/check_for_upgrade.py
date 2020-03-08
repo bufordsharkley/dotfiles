@@ -31,7 +31,7 @@ def print_color(message, color):
         'purple': '\033[95m',
         'light blue': '\033[96m',
     }
-    print colors[color] + message + colors['normal']
+    print(colors[color] + message + colors['normal'])
 
 
 class NotReadyToCommitError(Exception):
@@ -44,18 +44,18 @@ def _upgrade_script():
                 'blue')
     repo = git.Repo(os.environ['DOTFILES'])
     if repo.is_dirty():
-        print 'would you like to push?'
+        print('would you like to push?')
         repo.git.add(all=True)
-        print repo.git.status()
+        print(repo.git.status())
         while True:
-            key = raw_input(COMMIT_QUERY).strip().lower()
+            key = input(COMMIT_QUERY).strip().lower()
             if key == 'y':
-                commit_message = raw_input('Commit message:\n').strip()
+                commit_message = input('Commit message:\n').strip()
                 repo.index.commit(commit_message)
                 _push_to_origin(repo)
                 break
             elif key == 'd':
-                print repo.git.diff(cached=True, color=True)
+                print(repo.git.diff(cached=True, color=True))
             else:
                 raise NotReadyToCommitError
     else:
@@ -72,7 +72,7 @@ def _upgrade_script():
 def _push_to_origin(repo):
     while True:
         try:
-            print repo.remotes.origin.push()
+            print(repo.remotes.origin.push())
             return
         except git.exc.GitCommandError:
             print_color('You are a bad typer.', 'red')
