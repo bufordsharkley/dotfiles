@@ -15,24 +15,25 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/home/mgm/repos/money:/usr/local/heroku/bin:/home/mgm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/texlive/2018/bin/x86_64-linux/"
+export PATH="/home/mgm/repos/money:/usr/local/heroku/bin:/home/mgm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/texlive/2018/bin/x86_64-linux/:/home/mgm/.poetry/bin::/snap/bin:/home/mgm/.local/bin"
 export DOTFILES=$HOME/repos/dotfiles
 
 source $ZSH/oh-my-zsh.sh
 
-python() {
+prython() {
     if [[ -z "$@" ]]; then
         if [[ -z "$VIRTUAL_ENV" ]]; then
             command ipython3 -i ~/.ipythonrc
         else
-            command python
+            command python3
         fi
     else
-        command python "$@"
+        command python3 "$@"
     fi
 }
 
 alias envpython='/usr/bin/env python'
+alias rm='rm -i'
 
 export PYTHONPATH=$PYTHONPATH:.:/home/mgm/repos/kzsu-web
 
@@ -93,5 +94,15 @@ mplayerbg() { mplayer "$@" </dev/null >/dev/null 2>&1 & }
 
 if [[ -z $PIPENV_ACTIVE ]]; then
   python3 $DOTFILES/scripts/doom.py
-  todo-txt lsp a-c
+  todo-txt lsp | head
+  # Previous methods to show how many terminals open:
+  #echo $(ps ax | grep zsh | wc -l | cut -f1 -d' ')
+  #if (( $(ps ax | grep zsh | wc -l) > 11)); then
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+pyenv virtualenvwrapper

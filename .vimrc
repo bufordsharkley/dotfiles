@@ -113,19 +113,34 @@ noremap <space> viw
 vnoremap <space> <Esc>
 " f4 to toggle highlighting
 :noremap <F3> :set paste<CR>"*p:set nopaste<CR>
-:noremap <F4> :set hlsearch! hlsearch?<CR>
+":noremap <F4> :set hlsearch! hlsearch?<CR>
+":nnoremap <F4> :exec '!python ~/repos/george_text/comp_para.py'<cr>
+:nnoremap <F4> :exec '!python ~/repos/george_text/comp_para.py'<cr>
 :noremap <F1> :set buftype=""
 "windows: allowing switching easily:
 noremap <C-K> <C-W>k<C-W>_
 noremap <C-L> <C-W>l<C-W>_
 noremap <C-H> <C-W>h<C-W>_
 noremap <C-A><C-A> <C-W><C-W>
+augroup filetype_TXT
+    autocmd FileType text nnoremap <buffer> <F5> :exec '!wc' shellescape(@%, 1)<cr>
+augroup END
 " execute python with f5:
 augroup filetype_python
     autocmd!
+    autocmd FileType python nnoremap <buffer> <F4> :exec '!pytest' shellescape(@%, 1)<cr>
     autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr>
-    autocmd FileType python nnoremap <buffer> <F6> :exec '!make unittest' shellescape(@%, 1)<cr>
+    autocmd FileType python nnoremap <buffer> <F6> :exec '!mypy' shellescape(@%, 1)<cr>
+    "autocmd FileType python nnoremap <buffer> <F6> :exec '!make unittest' shellescape(@%, 1)<cr>
+    autocmd FileType python nnoremap <buffer> <F7> :exec '!python3 -m nose' shellescape(@%, 1)<cr>
     autocmd FileType python nnoremap <buffer> <F9> :exec '!make test' shellescape(@%, 1)<cr>
+augroup END
+
+
+augroup filetype_rust
+    autocmd!
+    autocmd FileType rust nnoremap <buffer> <F5> :exec '!cargo run'<cr>
+    autocmd FileType rust nnoremap <buffer> <F7> :exec '!cargo test'<cr>
 augroup END
 
 syntax enable
@@ -139,7 +154,6 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 let g:SuperTabDefaultCompletionType = "context"
-let g:jedi#popup_on_dot = 0
 if has('python3')
    python3 from powerline.vim import setup as powerline_setup
    python3 powerline_setup()
@@ -169,3 +183,19 @@ let hostfile=$HOME . '/.vimrc-specific'
 if filereadable(hostfile)
     exe 'source ' . hostfile
 endif
+
+"call plug#begin('~/.vim/plugins')
+" Plug 'davidhalter/jedi-vim'
+"Plug 'vim-syntastic/syntastic'
+"call plug#end()
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"
+"let g:syntastic_python_checkers = ['python3']
+
+nnoremap <buffer> H :<C-u>execute "!pydoc3 " . expand("<cword>")<CR>
+
+

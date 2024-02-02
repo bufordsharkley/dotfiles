@@ -1,5 +1,6 @@
 import socket
 import xonsh.environ as xenv
+import xonsh.prompt
 
 
 def prompt_status():
@@ -12,14 +13,14 @@ def prompt_status():
 
 
 def current_branch():
-  branch = xenv.current_branch()
+  branch = xonsh.prompt.vc.current_branch()
   if branch:
     branch = '' + branch
   return branch
 
 
 def branch_color():
-  if xenv.git_dirty_working_directory(include_untracked=True):
+  if xonsh.prompt.vc.git_dirty_working_directory(include_untracked=True):
     return '{YELLOW}'
   return '{GREEN}'
 
@@ -30,7 +31,7 @@ def xonsh_hostname():
     bg_color = 'BG#F00'
   else:
     bg_color = 'NO_COLOR'
-  return '{{{}}}{{WHITE}}{}@{}{{NO_COLOR}}'.format(bg_color, $FORMATTER_DICT['user'], hostname)
+  return '{{{}}}{{WHITE}}{}@{}{{NO_COLOR}}'.format(bg_color, $PROMPT_FIELDS['user'], hostname)
 
 """
 
@@ -64,10 +65,10 @@ def prompt_git():
     return "${ref/refs\/heads\// }${vcs_info_msg_0_%% }${mode}"
 """
 
-$FORMATTER_DICT['prompt_status'] = prompt_status
-$FORMATTER_DICT['curr_branch'] = current_branch
-$FORMATTER_DICT['branch_color'] = branch_color
-$FORMATTER_DICT['hostname'] = xonsh_hostname
+$PROMPT_FIELDS['prompt_status'] = prompt_status
+$PROMPT_FIELDS['curr_branch'] = current_branch
+$PROMPT_FIELDS['branch_color'] = branch_color
+$PROMPT_FIELDS['hostname'] = xonsh_hostname
 
 
 

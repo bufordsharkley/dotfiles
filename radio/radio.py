@@ -19,7 +19,7 @@ FIFO_FILE = '/tmp/radiofifo'
 
 def _check_status_of_fifo(path):
     if not os.path.exists(path):
-        resp = raw_input('{} does not exist. Create?\n'.format(path))
+        resp = input('{} does not exist. Create?\n'.format(path))
         if resp.strip().lower() == 'y':
             os.mkfifo(path)
         else:
