@@ -91,7 +91,7 @@ if __name__ == '__main__':
     if os.path.exists(ZSH_UPDATE_FILE):
         last_update = _fetch_time_of_last_update()
         diff = _current_epoch_days() - last_update
-        if diff > DAYS_BETWEEN_CHECKS or True:
+        if diff > DAYS_BETWEEN_CHECKS:
             try:
                 _upgrade_script()
                 _update_zsh_update()
