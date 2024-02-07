@@ -60,11 +60,13 @@ def _upgrade_script():
                 raise NotReadyToCommitError
     else:
         try:
+            help(repo.remotes.origin.pull())
             repo.remotes.origin.pull()
             # TODO -- only print if anything happened.
             # and print new commit messages.
             print_color('Pulled from origin successful.', 'green')
-        except git.exc.GitCommandError:
+        except git.exc.GitCommandError as e:
+            print(e)
             print_color('No connectivity; cannot pull from dotfiles', 'yellow')
             raise
 
@@ -91,7 +93,7 @@ if __name__ == '__main__':
     if os.path.exists(ZSH_UPDATE_FILE):
         last_update = _fetch_time_of_last_update()
         diff = _current_epoch_days() - last_update
-        if diff > DAYS_BETWEEN_CHECKS:
+        if diff > DAYS_BETWEEN_CHECKS or True:
             try:
                 _upgrade_script()
                 _update_zsh_update()
