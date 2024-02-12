@@ -61,7 +61,6 @@ def _upgrade_script():
     else:
         try:
             repo.remotes.origin.pull('master')
-            repo.remotes.origin.pull()
             # TODO -- only print if anything happened.
             # and print new commit messages.
             print_color('Pulled from origin successful.', 'green')
